@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Markets Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" 
+    referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  background: black;
+  color: #fff;
+}
+
+.container {
+  max-width: 1250px;
+  margin: auto;
+  padding: 15px;
+  font-size: 30px;
+}
+
+.section {
+  background: #1a1b1f;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 15px;
+}
+
+.section-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.market-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.market-box .label {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.market-box .value {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.green {
+  color: #4caf50;
+}
+
+.red {
+  color: #f44336;
+}
+
+.dropdown {
+  margin-bottom: 10px;
+}
+
+.btn {
+  background: #2a2b30;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  margin-left: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn :hover{
+background-color:gray;
+}
+
+.btn.active {
+  background-color: #3e5eff;
+}
+
+.watchlist .option,
+.option,
+.commodity {
+  font-size: 14px;
+  padding: 6px 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #2a2b30;
+}
+
+.watchlist a{
+    text-decoration: none;
+    color:white;
+}
+
+.watchlist a:hover{
+    color: gray;
+}
+
+.tabs {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.tab {
+  flex: 1;
+  padding: 6px;
+  background: #2a2b30;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #3e5eff;
+}
+
+.commodities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 10px;
+  padding: 15px;
+  font-size: 22px;
+  background-color: transparent;
+  margin-bottom: 15px;
+}
+
+.header h1{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+#index-select {
+  background-color: #2a2b30;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  appearance: none; 
+  cursor: pointer;
+  width: 200px; 
+}
+
+#index-select:focus {
+  border-color: black;
+  box-shadow: 0 0 5px black;
+}
+
+.section a{
+    text-decoration: none;
+    color: white;
+}
+
+.section a:hover{
+    color:gray;
+}
+
+.tabs .tab {
+  transition: background 0.3s ease;
+}
+
+.tabs .tab:hover {
+  background-color: #3e3f45;
+}
+
+.dropdown .btn {
+   transition: background 0.3s ease;
+}
+
+.dropdown .btn:hover {
+  background-color: #3e3f45;
+}
+
+
+.market-box .label{
+cursor:pointer;
+}
+
+.market-box .label:hover {
+  color:gray;
+}
+
+.footer-modern {
+  background-color: #1e1c2a;
+  color: #ddd;
+  padding: 60px 30px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.footer-box h2.footer-logo {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.footer-box h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.footer-box p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #bbb;
+}
+
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-box ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-box ul li a {
+  text-decoration: none;
+  color: #aaa;
+  transition: color 0.3s;
+}
+
+.footer-box ul li a:hover {
+  color: #fff;
+}
+
+.footer-social a {
+  color: white;
+  font-size: 16px;
+  background: #333;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 100%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.footer-social a:hover {
+  background: white;
+  transform: scale(1.1);
+  color:#1a1a1a;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #bbb;
+}
+
+.subscribe-form {
+  display: flex;
+  margin-top: 15px;
+}
+
+.subscribe-form input[type="email"] {
+  padding: 10px;
+  border: none;
+  outline: none;
+  width: 70%;
+  border-radius: 4px 0 0 4px;
+}
+
+.subscribe-form button {
+  padding: 10px 15px;
+  background: #a065ff;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #7a3fff;
+}
+
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.section:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.section:nth-of-type(3){
+  animation-delay: 0.4s;
+}
+
+
+
+.buttons a:hover,
+.buttons1 a:hover,
+.btn-signing:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+body {
+  animation: fadePage 0.8s ease-in;
+}
+
+@keyframes fadePage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+  </style>
+</head>
+<body>
+    <div class="header">
+        <i class="fab fa-bitcoin"></i>
+        <h1>COINSTOCKS</h1><br>
+    </div>
+  <div class="container">
+    <h3>F&O</h3>
+    <!-- Markets Today -->
+    <section class="section">
+      <div class="section-header">Markets Today</div>
+      <div class="market-row">
+        <div class="market-box">
+          <div class="label"><a href="">NIFTY</a></div>
+          <div class="value green">₹25,112.40 ▲+319.15 (1.29%)</div>
+        </div>
+        <div class="market-box">
+          <div class="label"><a href="">SENSEX</a></div>
+          <div class="value green">₹82,408.17 ▲+1046.43</div>
+        </div>
+      </div>
+    </section><br>
+
+<section class="section">
+  <div class="section-header">Options Watchlist</div>
+  <div class="dropdown">
+    <select id="index-select">
+      <option value="sensex">SENSEX</option>
+      <option value="nifty">NIFTY</option>
+      <option value="bankex">BANKEX</option>
+      <option value="finnifty">FINNIFTY</option>
+      <option value="midcpnifty">MIDCPNIFTY</option>
+      <option value="banknifty">BANKNIFTY</option>
+      <option value="niftynxt50">NIFTYNXT50</option>
+    </select>
+    <button class="btn active" data-type="call">Call</button>
+    <button class="btn" data-type="put">Put</button>
+  </div>
+
+  <div id="watchlists">
+    <!-- SENSEX Call -->
+    <div class="watchlist" data-index="sensex" data-type="call">
+      <div class="option green"><a href="sensex.html"target="_blank">SENSEX 82300 CE</a> <span>₹421.10 ▲+₹260.50</span></div>
+      <div class="option green"><a href="sensex.html"target="_blank">SENSEX 82400 CE</a> <span>₹369.60 ▲+₹231.55</span></div>
+      <div class="option green"><a href="sensex.html"target="_blank">SENSEX 82500 CE</a> <span>₹315.80 ▲+₹199.00</span></div>
+      <div class="option green"><a href="sensex.html"target="_blank">SENSEX 82600 CE</a> <span>₹267.65 ▲+₹167.15</span></div>
+      <div class="option green"><a href="sensex.html"target="_blank">SENSEX 82700 CE</a> <span>₹223.95 ▲+₹140.50</span></div>
+    </div>
+
+    <!-- SENSEX Put -->
+    <div class="watchlist" data-index="sensex" data-type="put" style="display:none;">
+      <div class="option red"><a href="sensex.html"target="_blank">SENSEX 82500 PE</a> <span>₹405.20 ▼-₹751.90</span></div>
+      <div class="option red"><a href="sensex.html"target="_blank">SENSEX 82400 PE</a> <span>₹357.35 ▼-₹712.20</span></div>
+      <div class="option red"><a href="sensex.html"target="_blank">SENSEX 82300 PE</a> <span>₹317.40 ▼-₹671.05</span></div>
+      <div class="option red"><a href="sensex.html"target="_blank">SENSEX 82200 PE</a> <span>₹283.00 ▼-₹634.00</span></div>
+      <div class="option red"><a href="sensex.html"target="_blank">SENSEX 82100 PE</a> <span>₹249.55 ▼-₹591.70</span></div>
+    </div>
+
+    
+<!-- NIFTY Call -->
+<div class="watchlist" data-index="nifty" data-type="call" style="display:none;">
+  <div class="option green"><a href="nifty.html"target="_blank">NIFTY 18600 CE</a> <span>₹310.15 ▲+₹120.50</span></div>
+  <div class="option green"><a href="nifty.html"target="_blank">NIFTY 18700 CE</a> <span>₹290.60 ▲+₹110.55</span></div>
+  <div class="option green"><a href="nifty.html"target="_blank">NIFTY 18800 CE</a> <span>₹271.80 ▲+₹98.25</span></div>
+  <div class="option green"><a href="nifty.html"target="_blank">NIFTY 18900 CE</a> <span>₹245.50 ▲+₹82.10</span></div>
+  <div class="option green"><a href="nifty.html"target="_blank">NIFTY 19000 CE</a> <span>₹221.40 ▲+₹70.05</span></div>
+</div>
+
+<!-- NIFTY Put -->
+<div class="watchlist" data-index="nifty" data-type="put" style="display:none;">
+  <div class="option red"><a href="nifty.html"target="_blank">NIFTY 18600 PE</a> <span>₹218.10 ▼-₹45.00</span></div>
+  <div class="option red"><a href="nifty.html"target="_blank">NIFTY 18700 PE</a> <span>₹240.55 ▼-₹58.25</span></div>
+  <div class="option red"><a href="nifty.html"target="_blank">NIFTY 18800 PE</a> <span>₹295.60 ▼-₹91.30</span></div>
+  <div class="option red"><a href="nifty.html"target="_blank">NIFTY 18900 PE</a> <span>₹333.15 ▼-₹108.15</span></div>
+  <div class="option red"><a href="nifty.html"target="_blank">NIFTY 19000 PE</a> <span>₹380.10 ▼-₹135.90</span></div>
+</div>
+
+<!-- BANKEX Call -->
+<div class="watchlist" data-index="bankex" data-type="call" style="display:none;">
+  <div class="option green"><a href="bankex.html"target="_blank">BANKEX 47000 CE</a> <span>₹190.50 ▲+₹85.20</span></div>
+  <div class="option green"><a href="bankex.html"target="_blank">BANKEX 47100 CE</a> <span>₹175.30 ▲+₹72.15</span></div>
+  <div class="option green"><a href="bankex.html"target="_blank">BANKEX 47200 CE</a> <span>₹160.00 ▲+₹68.90</span></div>
+  <div class="option green"><a href="bankex.html"target="_blank">BANKEX 47300 CE</a> <span>₹149.70 ▲+₹64.20</span></div>
+  <div class="option green"><a href="bankex.html"target="_blank">BANKEX 47400 CE</a> <span>₹130.60 ▲+₹55.75</span></div>
+</div>
+
+<!-- BANKEX Put -->
+<div class="watchlist" data-index="bankex" data-type="put" style="display:none;">
+  <div class="option red"><a href="bankex.html"target="_blank">BANKEX 47000 PE</a> <span>₹205.90 ▼-₹98.20</span></div>
+  <div class="option red"><a href="bankex.html"target="_blank">BANKEX 47100 PE</a> <span>₹190.60 ▼-₹87.75</span></div>
+  <div class="option red"><a href="bankex.html"target="_blank">BANKEX 47200 PE</a> <span>₹178.25 ▼-₹80.65</span></div>
+  <div class="option red"><a href="bankex.html"target="_blank">BANKEX 47300 PE</a> <span>₹165.15 ▼-₹75.30</span></div>
+  <div class="option red"><a href="bankex.html"target="_blank">BANKEX 47400 PE</a> <span>₹152.90 ▼-₹68.50</span></div>
+</div>
+
+<!-- FINNIFTY Call -->
+<div class="watchlist" data-index="finnifty" data-type="call" style="display:none;">
+  <div class="option green"><a href="finnifty.html" target="_blank">FINNIFTY 21000 CE</a> <span>₹178.00 ▲+₹72.00</span></div>
+  <div class="option green"><a href="finnifty.html">FINNIFTY 21100 CE</a> <span>₹162.40 ▲+₹63.20</span></div>
+  <div class="option green"><a href="finnifty.html">FINNIFTY 21200 CE</a> <span>₹150.10 ▲+₹55.15</span></div>
+  <div class="option green"><a href="finnifty.html">FINNIFTY 21300 CE</a> <span>₹139.00 ▲+₹49.30</span></div>
+  <div class="option green"><a href="finnifty.html">FINNIFTY 21400 CE</a> <span>₹124.25 ▲+₹41.60</span></div>
+</div>
+
+<!-- FINNIFTY Put -->
+<div class="watchlist" data-index="finnifty" data-type="put" style="display:none;">
+  <div class="option red"><a href="finnifty.html">FINNIFTY 21000 PE</a> <span>₹202.00 ▼-₹89.00</span></div>
+  <div class="option red"><a href="finnifty.html">FINNIFTY 21100 PE</a> <span>₹187.40 ▼-₹78.10</span></div>
+  <div class="option red"><a href="finnifty.html">FINNIFTY 21200 PE</a> <span>₹173.55 ▼-₹68.75</span></div>
+  <div class="option red"><a href="finnifty.html">FINNIFTY 21300 PE</a> <span>₹158.00 ▼-₹61.50</span></div>
+  <div class="option red"><a href="finnifty.html">FINNIFTY 21400 PE</a> <span>₹144.25 ▼-₹53.60</span></div>
+</div>
+
+<!-- MIDCPNIFTY Call -->
+<div class="watchlist" data-index="midcpnifty" data-type="call" style="display:none;">
+  <div class="option green"><a href="midcpnifty.html">MIDCPNIFTY 11000 CE</a> <span>₹225.10 ▲+₹115.20</span></div>
+  <div class="option green"><a href="midcpnifty.html">MIDCPNIFTY 11100 CE</a> <span>₹210.45 ▲+₹104.10</span></div>
+  <div class="option green"><a href="midcpnifty.html">MIDCPNIFTY 11200 CE</a> <span>₹194.80 ▲+₹93.55</span></div>
+  <div class="option green"><a href="midcpnifty.html">MIDCPNIFTY 11300 CE</a> <span>₹180.10 ▲+₹83.40</span></div>
+  <div class="option green"><a href="midcpnifty.html">MIDCPNIFTY 11400 CE</a> <span>₹167.50 ▲+₹75.25</span></div>
+</div>
+
+<!-- MIDCPNIFTY Put -->
+<div class="watchlist" data-index="midcpnifty" data-type="put" style="display:none;">
+  <div class="option red"><a href="midcpnifty.html">MIDCPNIFTY 11000 PE</a> <span>₹242.30 ▼-₹110.60</span></div>
+  <div class="option red"><a herf="midcpnifty.html">MIDCPNIFTY 11100 PE</a> <span>₹228.10 ▼-₹99.25</span></div>
+  <div class="option red"><a href="midcpnifty.html">MIDCPNIFTY 11200 PE</a> <span>₹213.90 ▼-₹91.45</span></div>
+  <div class="option red"><a href="midcpnifty.html">MIDCPNIFTY 11300 PE</a> <span>₹198.60 ▼-₹83.00</span></div>
+  <div class="option red"><a href="midcpnifty.html">MIDCPNIFTY 11400 PE</a> <span>₹183.40 ▼-₹74.35</span></div>
+</div>
+
+<!-- BANKNIFTY Call -->
+<div class="watchlist" data-index="banknifty" data-type="call" style="display:none;">
+  <div class="option green"><a href="banknifty.html">BANKNIFTY 48200 CE</a> <span>₹310.10 ▲+₹140.20</span></div>
+  <div class="option green"><a href="banknifty.html">BANKNIFTY 48300 CE</a> <span>₹294.85 ▲+₹129.45</span></div>
+  <div class="option green"><a href="banknifty.html">BANKNIFTY 48400 CE</a> <span>₹280.50 ▲+₹118.00</span></div>
+  <div class="option green"><a href="banknifty.html">BANKNIFTY 48500 CE</a> <span>₹265.10 ▲+₹108.75</span></div>
+  <div class="option green"><a href="banknifty.html">BANKNIFTY 48600 CE</a> <span>₹249.95 ▲+₹99.40</span></div>
+</div>
+
+<!-- BANKNIFTY Put -->
+<div class="watchlist" data-index="banknifty" data-type="put" style="display:none;">
+  <div class="option red"><a href="banknifty.html">BANKNIFTY 48200 PE</a> <span>₹333.20 ▼-₹122.00</span></div>
+  <div class="option red"><a href="banknifty.html">BANKNIFTY 48300 PE</a> <span>₹319.15 ▼-₹114.85</span></div>
+  <div class="option red"><a href="banknifty.html">BANKNIFTY 48400 PE</a> <span>₹304.80 ▼-₹106.30</span></div>
+  <div class="option red"><a href="banknifty.html">BANKNIFTY 48500 PE</a> <span>₹289.45 ▼-₹99.60</span></div>
+  <div class="option red"><a href="banknifty.html">BANKNIFTY 48600 PE</a> <span>₹273.90 ▼-₹91.75</span></div>
+</div>
+
+<!-- NIFTYNXT50 Call -->
+<div class="watchlist" data-index="niftynxt50" data-type="call" style="display:none;">
+  <div class="option green"><a href="niftynxt50.html">NIFTYNXT50 4900 CE</a> <span>₹110.10 ▲+₹60.20</span></div>
+  <div class="option green"><a href="niftynxt50.html">NIFTYNXT50 4950 CE</a> <span>₹98.75 ▲+₹52.15</span></div>
+  <div class="option green"><a href="niftynxt50.html">NIFTYNXT50 5000 CE</a> <span>₹85.40 ▲+₹45.30</span></div>
+  <div class="option green"><a href="niftynxt50.html">NIFTYNXT50 5050 CE</a> <span>₹73.20 ▲+₹39.10</span></div>
+  <div class="option green"><a href="niftynxt50.html">NIFTYNXT50 5100 CE</a> <span>₹61.90 ▲+₹32.55</span></div>
+</div>
+
+<!-- NIFTYNXT50 Put -->
+<div class="watchlist" data-index="niftynxt50" data-type="put" style="display:none;">
+  <div class="option red"><a href="niftynxt50.html">NIFTYNXT50 4900 PE</a> <span>₹130.20 ▼-₹52.00</span></div>
+  <div class="option red"><a href="niftynxt50.html">NIFTYNXT50 4950 PE</a> <span>₹118.80 ▼-₹48.25</span></div>
+  <div class="option red"><a href="niftynxt50.html">NIFTYNXT50 5000 PE</a> <span>₹106.90 ▼-₹43.10</span></div>
+  <div class="option red"><a href="niftynxt50.html">NIFTYNXT50 5050 PE</a> <span>₹94.55 ▼-₹38.30</span></div>
+  <div class="option red"><a href="niftynxt50.html">NIFTYNXT50 5100 PE</a> <span>₹81.60 ▼-₹33.70</span></div>
+</div>
+</section><br>
+
+
+
+    <!-- Most Popular Options -->
+    <section class="section">
+      <div class="section-header">Most Popular Options</div>
+      <div class="option red"><a href="sensex.html"target="_blank">SENSEX 82500 PE</a> <span>₹405.20 ▼-₹751.90 (-64.98%)</span></div>
+      <div class="option green"><a href="sensex.html"target="_blank">SENSEX 82300 CE</a> <span>₹421.10 ▲+₹260.50 (162.20%)</span></div>
+      <div class="option red"><a href="banknifty.html">BANKNIFTY 56400 PE</a> <span>₹425.45 ▼-₹481.40 (-53.10%)</span></div>
+      <div class="option green"><a href="banknifty.html">BANKNIFTY 56200 CE</a> <span>₹421.15 ▲+₹194.95 (85.61%)</span></div>
+      <div class="option green"><a href="bankex.html"target="_blank">BANKEX 63300 CE</a> <span>₹371.65 ▲+₹173.10 (87.18%)</span></div>
+    </section><br>
+
+<!-- Discover -->
+<section class="section">
+  <div class="section-header">Discover</div>
+  <div class="tabs" id="discover-tabs">
+    <button class="tab active" data-type="Price Gainers">Price Gainers</button>
+    <button class="tab" data-type="Price Losers">Price Losers</button>
+    <button class="tab" data-type="OI Gainers">OI Gainers</button>
+    <button class="tab" data-type="OI Losers">OI Losers</button>
+  </div>
+
+  <!-- Slider content areas -->
+  <div class="discover" data-type="Price Gainers">
+    <div class="option green"><a href="hudco.html"target="_blank">HUDCO</a> <span>₹227.98 ▲+₹10.55 (4.85%)</span></div>
+    <div class="option green"><a href="pfc.html">PFC</a> <span>₹409.15 ▲+₹19.15 (4.91%)</span></div>
+    <div class="option green"><a href="ireda.html">IREDA</a> <span>₹165.71 ▲+₹6.56 (4.12%)</span></div>
+  </div>
+
+  <div class="discover" data-type="Price Losers" style="display: none;">
+    <div class="option red"><a href="godrejcp.html">GODREJCP</a> <span>₹1,188.00 ▼-₹5.60 (-0.47%)</span></div>
+    <div class="option red"><a href="muthootfin.html"target="_blank">MUTHOOTFIN</a> <span>₹2,611.90 ▼-₹22.10 (-0.84%)</span></div>
+    <div class="option red"><a href="shreecem.html"target="_blank">SHREECEM</a> <span>₹29,010.00 ▼-₹265.00 (-0.91%)</span></div>
+  </div>
+
+  <div class="discover" data-type="OI Gainers" style="display: none;">
+    <div class="option green"><a href="trent.html"target="_blank">TRENT</a> <span>₹5,871.00 ▲+₹2.64 (+2.64%)</span></div>
+    <div class="option green"><a href="bel.html"target="_blank">BEL</a> <span>₹407.70 ▲+₹9.05 (+2.27%)</span></div>
+    <div class="option red"><a href="shreecem.html"target="_blank">SHREECEM</a> <span>₹29,010.00 ▼-₹265.00 (-0.91%)</span></div>
+  </div>
+
+  <div class="discover" data-type="OI Losers" style="display: none;">
+    <div class="option green"><a href="bluestarco.html">BLUESTARCO</a> <span>₹1,612.90 ▲+₹21.00 (+1.32%)</span></div>
+    <div class="option red"><a href="kei.html">KEI</a> <span>₹3,584.20 ▲+₹19.30 (-0.54%)</span></div>
+    <div class="option green"><a href="jsl.html">JSL</a> <span>₹670.85 ▲+₹1.83 (+1.83%)</span></div>
+  </div>
+</section><br>
+
+
+    <!-- Commodities -->
+    <section class="section">
+      <div class="section-header">Top Commodities</div>
+      <div class="commodities">
+        <div class="commodity red"><a href="crudeoil.html"target=_blank>Crude Oil</a> <span>₹6,404.00 ▼-₹45.00</span></div>
+        <div class="commodity green"><a href="naturalgas.html"target=_blank>Natural Gas</a> <span>₹333.10 ▲0.00</span></div>
+        <div class="commodity red"><a href="gold.html"target=_blank>Gold</a> <span>₹99,109.00 ▼-₹220.00</span></div>
+        <div class="commodity red"><a href="silver.html"target=_blank>Silver</a> <span>₹1,06,224.00 ▼-₹1,169.00</span></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+  const selectEl = document.getElementById('index-select');
+  const buttons = document.querySelectorAll('.btn');
+  let selectedType = 'call';
+
+  function updateWatchlist() {
+    const selectedIndex = selectEl.value;
+    
+    document.querySelectorAll('#watchlists .watchlist').forEach(div => {
+      const matchIndex = div.getAttribute('data-index');
+      const matchType = div.getAttribute('data-type');
+      div.style.display = (matchIndex === selectedIndex && matchType === selectedType) ? 'block' : 'none';
+    });
+  }
+
+  // Handle Call/Put button clicks
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedType = btn.getAttribute('data-type');
+      updateWatchlist();
+    });
+  });
+
+  // Handle dropdown changes
+  selectEl.addEventListener('change', () => {
+    updateWatchlist();
+  });
+
+  // Initial load
+  updateWatchlist();
+
+  const discoverTabs = document.querySelectorAll('#discover-tabs .tab');
+  const discoverSections = document.querySelectorAll('.discover');
+
+  discoverTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs
+      discoverTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const selectedType = tab.getAttribute('data-type');
+
+      // Show only the matching content
+      discoverSections.forEach(section => {
+        section.style.display = section.getAttribute('data-type') === selectedType ? 'block' : 'none';
+      });
+    });
+  });
+
+</script>
+
+<footer class="footer-modern">
+  <div class="footer-wrapper">
+    <!-- Left: Logo + About -->
+    <div class="footer-box">
+      <h2 class="footer-logo"><i class="fab fa-bitcoin"></i> COINSTOCKS</h2>
+      <p>With this pre-made platform, you get access to stocks, crypto, F&O, and FD tools with 24/7 expert support and real-time updates.</p><br>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/"target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/"target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://discord.com/"target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://youtube.com"target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://linked.com"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- Middle: Links -->
+    <div class="footer-box">
+      <h3>About</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="ourterms.html">Our Terms</a></li>
+        <li><a href="contactus.html">Report</a></li>
+      </ul>
+    </div>
+
+    <!-- Right: Contact + Email Signup -->
+    <div class="footer-box">
+      <h3>Contact us</h3>
+      <ul class="contact-info">
+        <li><i class="fas fa-envelope"></i> info@coinstock.in</li>
+        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+        <li><i class="fas fa-map-marker-alt"></i> 123, Market Road, Chennai, India</li>
+      </ul>
+      <form class="subscribe-form">
+        <input type="email" placeholder="E-mail" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

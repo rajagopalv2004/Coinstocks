@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>News - COINSTOCKS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+    }
+
+    header {
+      background-color: #111;
+      display: flex;
+      align-items: center;
+      padding: 15px 25px;
+      border-bottom: 1px solid #333;
+      font-size: 32px;
+      letter-spacing: 1px;
+      word-spacing: 1px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo svg {
+      width: 32px;
+      height: 32px;
+      fill: white;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h2.section-title {
+      font-size: 1.6rem;
+      color: #5300a0;
+      margin-bottom: 20px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .news-card {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      transition: transform 0.3s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      border-color: #5300a0;
+    }
+
+    .news-card h3 {
+      color: #ffffff;
+      font-size: 1.2rem;
+    }
+
+    .news-card p {
+      color: #ccc;
+      font-size: 0.95rem;
+      margin-top: 10px;
+    }
+    
+    button{
+        background-color: #666;
+        color: white;
+        border-radius: 5px;
+        height: 35px;
+        width: 100px;
+    }
+
+    button:hover{
+        background-color: white;
+        color:#666;
+    }
+    
+    footer{
+    background-color: black;
+}
+
+.footerContainer{
+    width:100;
+    padding: 70px 30px 20px;
+}
+
+.socialIcons{
+    display: flex;
+    justify-content: center;
+}
+
+.socialIcons a{
+    text-decoration: none;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 500%;
+}
+
+.socialIcons a i{
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+}
+
+
+.socialIcons a:hover{
+    background-color: black;
+    transition: 0.5s;
+}
+
+.socialIcons a:hover i{
+    color: white;
+    transition: 0.5s;
+}
+
+.footerNav{
+    margin: 30px 0;
+}
+
+.footerNav u1{
+    display: flex;
+    justify-content:center ;
+}
+
+.footerNav u1 li a{
+    color: white;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.footerNav u1 li a:hover{
+    opacity: 1;
+}
+
+.footerBottom{
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+.footerBottom p{
+    color: white;
+}
+
+.designer{
+    opacity:0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0px 5px;
+}
+
+@media (max-width: 768px) {
+    .footerNav {
+        padding: 1rem 2rem;
+        flex-direction: row;
+        align-items: flex-start;
+        font-size: 12px
+        
+    }
+
+    .footerNav > u1{
+      font-size: 10px;
+      margin-left: 0;
+      margin-right:0;  
+      gap:1 rem;    
+    }
+
+    .footerContainer {
+        flex-direction: row;
+        gap: 1rem;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .footerBottom {
+        margin-left: 5%;
+    }
+}
+
+header i {
+    font-size: 28px;
+    margin-right: 10px;
+    color: white;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-wrapper i {
+    font-size: 28px;
+    color: white;
+}
+
+.logo-wrapper .log {
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+}
+
+.logo1-wrapper1 {
+    display: flex;
+    align-items: center;
+    gap: 16px; 
+}
+
+.logo1-wrapper1 form {
+    margin: 0;
+}
+
+.btn-signing {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-signing i {
+    font-size: 28px;
+    color: white;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-signing:hover i {
+    color: gray; 
+    transform: scale(1.2); 
+}
+
+.footer-modern {
+  background-color: #1e1c2a;
+  color: #ddd;
+  padding: 60px 30px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.footer-box h2.footer-logo {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.footer-box h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.footer-box p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #bbb;
+}
+
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-box ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-box ul li a {
+  text-decoration: none;
+  color: #aaa;
+  transition: color 0.3s;
+}
+
+.footer-box ul li a:hover {
+  color: #fff;
+}
+
+.footer-social a {
+  color: white;
+  font-size: 16px;
+  background: #333;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 100%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.footer-social a:hover {
+  background: white;
+  transform: scale(1.1);
+  color:#1a1a1a;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #bbb;
+}
+
+.subscribe-form {
+  display: flex;
+  margin-top: 15px;
+}
+
+.subscribe-form input[type="email"] {
+  padding: 10px;
+  border: none;
+  outline: none;
+  width: 70%;
+  border-radius: 4px 0 0 4px;
+}
+
+.subscribe-form button {
+  padding: 10px 15px;
+  background: #a065ff;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #7a3fff;
+}
+
+/* === Scroll Fade-In Animation === */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content, .content1 {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.content:nth-of-type(2), .content1:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.content:nth-of-type(3), .content1:nth-of-type(3) {
+  animation-delay: 0.4s;
+}
+
+/* === Floating Animation for Icons === */
+.logo-wrapper i, .footer-social a i {
+  animation: floatIcon 2.5s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* === Button Hover Pulse === */
+.buttons a:hover,
+.buttons1 a:hover,
+.btn-signing:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* === Social Icons bounce === */
+.footer-social a:hover {
+  animation: bounceIcon 0.3s ease;
+}
+
+@keyframes bounceIcon {
+  0% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.2) translateY(-5px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+/* === Smooth page load === */
+body {
+  animation: fadePage 0.8s ease-in;
+}
+
+@keyframes fadePage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <i class="fab fa-bitcoin"></i>
+    COINSTOCKS
+  </header>
+
+  <div class="container">
+    <h2 class="section-title">Latest News - Stocks, Crypto, F&O, FDs</h2>
+
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>Bitcoin Hits New High in 2025</h3>
+        <p>Bitcoin surged past $80,000 as investors turn bullish amid global economic uncertainty.</p>
+        <button onclick="window.location.href='bitcoin.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Nifty 50 Sees Strong Rally</h3>
+        <p>Indian stock market rallies with Nifty closing 2% higher on increased FII buying.</p>
+        <button onclick="window.location.href='nifty.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Crypto F&O Now Live</h3>
+        <p>COINSTOCKS launches crypto Futures & Options trading with high liquidity and leverage.</p>
+        <button onclick="window.location.href='f&o.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Best FDs for Q3 2025</h3>
+        <p>Fixed deposits offering up to 8.5% p.a. interest — check our curated list of secure options.</p>
+        <button onclick="window.location.href='fd.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Bitcoin Hits New High in 2025</h3>
+        <p>Bitcoin surged past $80,000 as investors turn bullish amid global economic uncertainty.</p>
+        <button onclick="window.location.href='bitcoin.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Nifty 50 Sees Strong Rally</h3>
+        <p>Indian stock market rallies with Nifty closing 2% higher on increased FII buying.</p>
+        <button onclick="window.location.href='nifty.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Crypto F&O Now Live</h3>
+        <p>COINSTOCKS launches crypto Futures & Options trading with high liquidity and leverage.</p>
+        <button onclick="window.location.href='f&o.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Best FDs for Q3 2025</h3>
+        <p>Fixed deposits offering up to 8.5% p.a. interest — check our curated list of secure options.</p>
+        <button onclick="window.location.href='fd.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Bitcoin Hits New High in 2025</h3>
+        <p>Bitcoin surged past $80,000 as investors turn bullish amid global economic uncertainty.</p>
+        <button onclick="window.location.href='bitcoin.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Nifty 50 Sees Strong Rally</h3>
+        <p>Indian stock market rallies with Nifty closing 2% higher on increased FII buying.</p>
+        <button onclick="window.location.href='nifty.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Crypto F&O Now Live</h3>
+        <p>COINSTOCKS launches crypto Futures & Options trading with high liquidity and leverage.</p>
+        <button onclick="window.location.href='f&o.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Best FDs for Q3 2025</h3>
+        <p>Fixed deposits offering up to 8.5% p.a. interest — check our curated list of secure options.</p>
+        <button onclick="window.location.href='fd.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Nifty 50 Sees Strong Rally</h3>
+        <p>Indian stock market rallies with Nifty closing 2% higher on increased FII buying.</p>
+        <button onclick="window.location.href='nifty.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Crypto F&O Now Live</h3>
+        <p>COINSTOCKS launches crypto Futures & Options trading with high liquidity and leverage.</p>
+        <button onclick="window.location.href='f&o.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Best FDs for Q3 2025</h3>
+        <p>Fixed deposits offering up to 8.5% p.a. interest — check our curated list of secure options.</p>
+        <button onclick="window.location.href='fd.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Bitcoin Hits New High in 2025</h3>
+        <p>Bitcoin surged past $80,000 as investors turn bullish amid global economic uncertainty.</p>
+        <button onclick="window.location.href='bitcoin.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Nifty 50 Sees Strong Rally</h3>
+        <p>Indian stock market rallies with Nifty closing 2% higher on increased FII buying.</p>
+        <button onclick="window.location.href='nifty.html'">View Charts</button>
+      </div>
+
+      <div class="news-card">
+        <h3>Crypto F&O Now Live</h3>
+        <p>COINSTOCKS launches crypto Futures & Options trading with high liquidity and leverage.</p>
+        <button onclick="window.location.href='f&0.html'">View Charts</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-modern">
+  <div class="footer-wrapper">
+    <!-- Left: Logo + About -->
+    <div class="footer-box">
+      <h2 class="footer-logo"><i class="fab fa-bitcoin"></i> COINSTOCKS</h2>
+      <p>With this pre-made platform, you get access to stocks, crypto, F&O, and FD tools with 24/7 expert support and real-time updates.</p><br>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/"target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/"target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://discord.com/"target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://youtube.com"target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://linked.com"target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- Middle: Links -->
+    <div class="footer-box">
+      <h3>About</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="ourterms.html">Our Terms</a></li>
+        <li><a href="contactus.html">Report</a></li>
+      </ul>
+    </div>
+
+    <!-- Right: Contact + Email Signup -->
+    <div class="footer-box">
+      <h3>Contact us</h3>
+      <ul class="contact-info">
+        <li><i class="fas fa-envelope"></i> info@coinstock.in</li>
+        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+        <li><i class="fas fa-map-marker-alt"></i> 123, Market Road, Chennai, India</li>
+      </ul>
+      <form class="subscribe-form">
+        <input type="email" placeholder="E-mail" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

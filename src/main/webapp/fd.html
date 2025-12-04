@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FD Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
+    }
+
+    .container {
+    height: 400px;
+    background-image: url("Fds1.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    animation: myani 6s infinite steps(1); 
+    align-items: center;
+    border-radius: 25%;
+    margin-left: 100px;
+    margin-right: 100px;
+    }
+
+
+    @keyframes myani {
+    0% { background-image: url("Fds1.jpg"); }
+    33.33% { background-image: url("Fds1.jpg"); }
+
+    33.34% { background-image: url("Fds2.jpg"); }
+    66.66% { background-image: url("Fds2.jpg"); }
+
+    66.67% { background-image: url("Fds3.jpg"); }
+    100% { background-image: url("Fds3.jpg"); }
+    }
+    
+
+
+    body {
+      background-color: black;
+      color: #fff;
+      padding: 2rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1{
+        font-weight: 400;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .tab {
+      background: #1c1f2e;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #bbb;
+    }
+
+    .tab.active {
+      background: #3f48cc;
+      color: #fff;
+    }
+
+    .card {
+      background: #18181d;
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      margin-left: 100px;
+      margin-right: 100px;
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .card .rate {
+      font-size: 1.3rem;
+      margin: 0.5rem 0;
+    }
+
+    .invest-btn {
+      padding: 0.5rem 1rem;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+
+    }
+
+    .section-title {
+      margin: 2rem 0 1rem;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .faq {
+      background: #18181d;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 2rem;
+      margin-left: 100px;
+      margin-right: 100px;
+    }
+
+    .faq h4 {
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+      cursor: pointer;
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+      margin-left: 100px;
+      margin-right: 100px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: darkgray;
+      padding: 1rem;
+      border-radius: 10px;
+      color: black
+    }
+
+    .feature-item i {
+      color: black;
+    }
+
+.bank-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.bank-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+header i {
+    font-size: 28px;
+    margin-right: 10px;
+    color: white;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-modern {
+  background-color: #1e1c2a;
+  color: #ddd;
+  padding: 60px 30px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.footer-box h2.footer-logo {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.footer-box h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.footer-box p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #bbb;
+}
+
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-box ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-box ul li a {
+  text-decoration: none;
+  color: #aaa;
+  transition: color 0.3s;
+}
+
+.footer-box ul li a:hover {
+  color: #fff;
+}
+
+.footer-social {
+  margin-top: 15px;
+}
+
+.footer-social a {
+  display: inline-block;
+  color: white;
+  font-size: 16px;
+  background: #333;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 100%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.footer-social a:hover {
+  background: white;
+  transform: scale(1.1);
+  color: #1a1a1a;
+}
+
+.contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.subscribe-form input[type="email"] {
+  flex: 1 1 60%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 4px 0 0 4px;
+}
+
+.subscribe-form button {
+  padding: 10px 15px;
+  background: #a065ff;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #7a3fff;
+}
+
+
+.invest-btn a{
+text-decoration:none;
+color: black;
+}
+
+.invest-btn a:hover{
+color: gray;
+}
+
+/* === Scroll Fade-In Animation === */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.card:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.card:nth-of-type(3){
+  animation-delay: 0.4s;
+}
+
+
+/* === Button Hover Pulse === */
+.buttons a:hover,
+.buttons1 a:hover,
+.btn-signing:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* === Smooth page load === */
+body {
+  animation: fadePage 0.8s ease-in;
+}
+
+@keyframes fadePage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.faq .faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.faq .arrow {
+  transition: transform 0.3s ease;
+}
+
+.faq .faq-answer {
+  display: none;
+  padding: 10px 0;
+  font-size: 14px;
+  color: #ccc;
+  border-top: 1px solid #333;
+}
+
+.faq-item.open .faq-answer {
+  display: block;
+}
+
+.faq-item.open .arrow {
+  transform: rotate(180deg); 
+}
+
+
+</style>
+</head>
+<body>
+  <div class="header">
+  <div class="logo-group">
+    <h1><i class="fab fa-bitcoin"></i></h1>
+    <h1>COINSTOCK</h1>
+  </div>
+  </div><br><br><br><br>
+    <h1>FIXED DEPOSITS</h1><br>
+  <div class="container">
+        
+    </div><br><br>
+
+  <h1 class="section-title"><h1>Most Bought FDs</h1></h1><br>
+  <div class="card">
+    <div class="bank-header">
+        <img src="sliceLogo.jpg" alt="Slice Logo" class="bank-logo">
+    <h2>Slice Small Finance Bank</h2>
+    </div><br>
+    <p class="rate"><h4>Interest rate up to</h4><h2>8.25%</h2></p><br>
+    <button class="invest-btn"><a href="slice.html">VIEW NOW</a></button>
+  </div><br>
+
+  <div class="card">
+    <p><h3>
+      <h2>Explore Tax-Saving FDs</h2><br>
+     <h4> ✔ Interest rate up to 8.6%<br>
+      ✔ Save taxes under Section 80C</h4>
+    </h3></p><br>
+  </div>
+
+  <h3 class="section-title"><h1>Bank FDs</h1></h3><br>
+  <div class="card">
+    <div class="bank-header">
+        <img src="suryodayLogo.jpg" alt="Suryoday Logo" class="bank-logo">
+    <h1>Suryoday Small Finance Bank</h1>
+    </div><br>
+    <p class="rate"><h4>Interest rate up to</h4><h2>8.4%</h2></p><br>
+    <button class="invest-btn"><a href="suryoday.html">VIEW NOW</a></button>
+  </div><br>
+  <div class="card">
+    <div class="bank-header">
+        <img src="Shivalik.png" alt="Shivalik Logo" class="bank-logo">
+    <h1>Shivalik Small Finance Bank</h1>
+    </div><br>
+    <p class="rate"><h4>Interest rate up to</h4><h2>8.3%</h2></p><br>
+    <button class="invest-btn"><a href="shivalik.html">VIEW NOW</a></button>
+  </div><br>
+  
+  
+  <div class="card">
+    <div class="bank-header">
+        <img src="Utkarsh.jpg" alt="Utkarsh Logo" class="bank-logo">
+    <h1>Utkarsh Small Finance Bank</h1>
+    </div><br>
+    <p class="rate"><h4>Interest rate up to</h4><h2>8.25%</h2></p><br>
+    <button class="invest-btn"><a href="utkarsh.html">VIEW NOW</a></button>
+  </div><br>
+  <div class="card">
+    <div class="bank-header">
+        <img src="South.jpg" alt="South Logo" class="bank-logo">
+    <h1>South Indian Bank</h1>
+    </div><br>
+    <p class="rate"><h4>Interest rate up to</h4><h2>6.7%</h2></p><br>
+    <button class="invest-btn"><a href="south.html">VIEW NOW</a></button>
+  </div><br>
+
+  <h1 class="section-title"><h1>Non-Bank FDs</h1></h1><br>
+  <div class="card">
+    <div class="bank-header">
+        <img src="Shriram.png" alt="Shriram Logo" class="bank-logo">
+    <h1>Shriram Finance</h1>
+    </div><br>
+    <p class="rate"><h4>Interest rate up to</h4><h2>8.09%</h2></p><br>
+    <button class="invest-btn"><a href="shriram.html">VIEW NOW</a></button>
+  </div><br>
+  <div class="card">
+    <div class="bank-header">
+        <img src="Bajaj.jpg" alt="Bajaj Logo" class="bank-logo">
+    <h1>Bajaj Finance</h1>
+    </div><br>
+    <p class="rate"><h4>Interest rate up to</h4><h2>6.95%</h2></p><br>
+    <button class="invest-btn"><a href="bajaj.html">VIEW NOW</a></button>
+  </div><br>
+
+  <h3 class="section-title"><h1>Why Choose Us?</h1></h3>
+  <div class="features">
+    <div class="feature-item"><i class="fa fa-university"></i><h3> No Bank Account Required</h3></div>
+    <div class="feature-item"><i class="fa fa-arrow-up"></i> <h3>Higher Interest Rates</h3></div>
+    <div class="feature-item"><i class="fa fa-exchange"></i><h3>Easy Withdrawal</h3></div>
+  </div><br><br><br>
+
+  <h3 class="section-title"><h1>Frequently Asked Questions</h1></h3>
+  <div class="faq">
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-question">
+      What is a fixed deposit and why should I invest?
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-answer">
+      A fixed deposit is a savings option where you deposit money for a fixed term and earn interest. It’s low risk and offers assured returns.
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-question">
+      What is DICGC and which deposits are secured by them?
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-answer">
+      DICGC insures bank deposits up to ₹5 lakh. It protects savings, current, recurring, and fixed deposits.
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-question">
+      What if my payment fails?
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-answer">
+      If your payment fails, the amount will be automatically refunded within 5–7 working days.
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-question">
+      Will my data be shared with outsiders?
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-answer">
+      No, we do not share your personal data with third parties without your consent.
+    </div>
+  </div>
+</div>
+<br><br><br><br><br><br></br>
+
+<footer class="footer-modern">
+  <div class="footer-wrapper">
+    <!-- Left: Logo + About -->
+    <div class="footer-box">
+      <h2 class="footer-logo"><i class="fab fa-bitcoin"></i> COINSTOCKS</h2>
+      <p>With this pre-made platform, you get access to stocks, crypto, F&O, and FD tools with 24/7 expert support and real-time updates.</p><br>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/"target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/"target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://discord.com/"target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://youtube.com"target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://linked.com"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- Middle: Links -->
+    <div class="footer-box">
+      <h3>About</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="ourterms.html">Our Terms</a></li>
+        <li><a href="contactus.html">Report</a></li>
+      </ul>
+    </div>
+
+    <!-- Right: Contact + Email Signup -->
+    <div class="footer-box">
+      <h3>Contact us</h3>
+      <ul class="contact-info">
+        <li><i class="fas fa-envelope"></i> info@coinstock.in</li>
+        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+        <li><i class="fas fa-map-marker-alt"></i> 123, Market Road, Chennai, India</li>
+      </ul>
+      <form class="subscribe-form">
+        <input type="email" placeholder="E-mail" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFAQ(el) {
+    const isOpen = el.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.classList.remove('open');
+    });
+
+    // Toggle clicked
+    if (!isOpen) {
+      el.classList.add('open');
+    }
+  }
+</script>
+
+</body>
+</html>

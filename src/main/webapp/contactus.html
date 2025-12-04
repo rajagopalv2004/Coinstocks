@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CONTACT US</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, sans-serif;
+      color: white;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: black;
+      background-size: cover;
+      background-position: center;
+      padding: 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(20px);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .container h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .input-box,
+    .input-box1 {
+      position: relative;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-box input,
+    .input-box1 input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 3rem; /* space for icon */
+      font-size: 1rem;
+      border-radius: 10px;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      outline: none;
+    }
+
+    .input-box1 input {
+      padding: 3rem 1rem 1rem 3rem;
+    }
+
+    .input-box i,
+    .input-box1 i {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .input-box input::placeholder,
+    .input-box1 input::placeholder {
+      color: gray;
+      font-style: italic;
+    }
+
+    .tag-box1 {
+      position: relative;
+      width: 100%;
+      max-width: 220px;
+      height: 2.8rem;
+      border-radius: 50px;
+      margin: 0 auto;
+      background: linear-gradient(to right, #656565, #7f42a7, #6600c5, #5300a0, #757575);
+      background-size: 200%;
+      animation: animationGradient 2.5s linear infinite;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .tag-box1 .btn1 {
+      position: absolute;
+      inset: 3px;
+      background-color: black;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .tag-box1 .btn1:hover {
+      color: #5300a0;
+    }
+
+    @keyframes animationGradient {
+      to {
+        background-position: 200%;
+      }
+    }
+
+    /* Header */
+    .container2 header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 1rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 300;
+    }
+
+    header i {
+      font-size: 28px;
+      color: white;
+    }
+
+    .center-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 5rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+
+      .container h1 {
+        font-size: 1.5rem;
+      }
+
+      .input-box input,
+      .input-box1 input {
+        font-size: 0.95rem;
+        padding: 0.9rem 1rem 0.9rem 2.8rem;
+      }
+
+      .btn1 {
+        font-size: 0.9rem;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .container h1 {
+        font-size: 1.3rem;
+      }
+
+      .input-box input,
+      .input-box1 input {
+        font-size: 0.85rem;
+        padding: 0.8rem 1rem 0.8rem 2.8rem;
+      }
+
+      .tag-box1 {
+        height: 2.5rem;
+      }
+
+      .btn1 {
+        font-size: 0.85rem;
+      }
+
+      header h1 {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* === Scroll Fade-In Animation === */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.center-box {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.center-box:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.center-box:nth-of-type(3){
+  animation-delay: 0.4s;
+}
+
+
+/* === Button Hover Pulse === */
+.buttons a:hover,
+.buttons1 a:hover,
+.btn-signing:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* === Smooth page load === */
+body {
+  animation: fadePage 0.8s ease-in;
+}
+
+@keyframes fadePage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+    
+    
+  </style>
+</head>
+<body>
+  <div class="container2">
+    <header>
+      <i class="fab fa-bitcoin"></i>
+      <h1>COINSTOCK</h1>
+    </header>
+  </div>
+
+  <div class="center-box">
+    <div class="container">
+      <form action="contactusServlet" method="post">
+        <h1>REPORT US</h1>
+        <div class="input-box">
+          <i class="fas fa-user"></i>
+          <input type="text" name="name" placeholder="Name" required>
+        </div>
+        <div class="input-box">
+          <i class="fas fa-envelope"></i>
+          <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="input-box">
+          <i class="fas fa-phone"></i>
+          <input type="tel" name="phone" placeholder="Phone" required>
+        </div>
+        <div class="input-box1">
+          <i class="fas fa-comment-dots"></i>
+          <input type="text" name="message" placeholder="Message" required>
+        </div>
+        <div class="tag-box1">
+          <button type="submit" class="btn1" id="submitBtn">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

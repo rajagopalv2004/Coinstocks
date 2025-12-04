@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" 
+    referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: black;
+    color: #e7e7e7;
+    min-height: 100vh;
+    line-height: 1.5;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+.image-gradiient {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.layer-blur {
+    height: 0;
+    width: 30rem;
+    position: absolute;
+    top: 20%;
+    right: 0;
+    box-shadow: 0 0 700px 15px white;
+    rotate: -30deg;
+    z-index: -1;
+}
+
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5rem;
+    z-index: 999;
+    background-color: transparent;
+    padding: 1rem 1rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+nav a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #a7a7a7;
+}
+
+.btn-signing {
+    background-color: black;
+    color: black;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+main {
+    display: flex-box;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(90vh - 6rem);
+}
+
+.content {
+    max-width: 40rem;
+    margin-left: 10%;
+    z-index: 999;
+}
+
+.tag-box {
+    position: relative;
+    width: 18rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    background: linear-gradient(to right, #656565, #7f42a7, #6600c5, 
+    #5300a0, #757575, #656565);
+    background-size: 200%;
+    animation: animationGradient 2.5s linear infinite;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes animationGradient {
+    to {
+        background-position: 200%;
+    }
+}
+
+.tag-box .tag {
+    position: absolute;
+    inset: 3px;
+    background-color: black;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.tag-box .tag:hover {
+    color: #5300a0;
+}
+
+.content h1 {
+    font-size: 4rem;
+    font-weight: 600;
+    margin: 2rem 0;
+    line-height: 1.2;
+    text-shadow: 0 0 10px rgba(128, 128, 128, 0.418);
+}
+
+.description {
+    font-size: 1.2rem;
+    max-width: 35rem;
+    color: gray;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.btn-get-started,
+.btn-signing-main {
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.6rem 1.8rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-get-started {
+    border: 1px solid #2a2a2a;
+    color: white;
+}
+
+.btn-get-started:hover {
+    background-color: #1a1a1a;
+}
+
+.btn-signing-main {
+    background-color: lightgray;
+    color: black;
+}
+
+.btn-signing-main:hover {
+    background-color: gray;
+}
+
+.main{
+    position: fixed;
+}
+
+.main1 {
+    display: flex-box;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(90vh - 6rem);
+}
+
+.content1 {
+    max-width: 40rem;
+    margin-left: 50%;
+    z-index: 999;
+    justify-content: right;
+}
+
+.tag1-box1 {
+    position: relative;
+    width: 18rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    background: linear-gradient(to right, #656565, #7f42a7, #6600c5, 
+    #5300a0, #757575, #656565);
+    background-size: 200%;
+    animation: animationGradient 2.5s linear infinite;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes animationGradient {
+    to {
+        background-position: 200%;
+    }
+}
+
+.tag1-box1 .tag1 {
+    position: absolute;
+    inset: 3px;
+    background-color: black;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.tag1-box1 .tag1:hover {
+    color: #5300a0;
+}
+
+.content1 h1 {
+    font-size: 4rem;
+    font-weight: 600;
+    margin: 2rem 0;
+    line-height: 1.2;
+    text-shadow: 0 0 10px rgba(128, 128, 128, 0.418);
+}
+
+.description1 {
+    font-size: 1.2rem;
+    max-width: 35rem;
+    color: gray;
+    justify-content: right;
+}
+
+.buttons1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 3rem;
+    justify-content: left;
+}
+
+.btn-get-started1,
+.btn-signing-main1 {
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.6rem 1.8rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-get-started1 {
+    border: 1px solid #2a2a2a;
+    color: white;
+}
+
+.btn-get-started1:hover {
+    background-color: #1a1a1a;
+}
+
+.btn-signing-main1 {
+    background-color: lightgray;
+    color: black;
+}
+
+.btn-signing-main1:hover {
+    background-color: gray;
+}
+
+.main1{
+    position: fixed;
+}
+
+main {
+    display: flex-box;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(90vh - 6rem);
+}
+
+.content {
+    max-width: 40rem;
+    margin-left: 10%;
+    z-index: 999;
+}
+
+.tag-box {
+    position: relative;
+    width: 18rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    background: linear-gradient(to right, #656565, #7f42a7, #6600c5, 
+    #5300a0, #757575, #656565);
+    background-size: 200%;
+    animation: animationGradient 2.5s linear infinite;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes animationGradient {
+    to {
+        background-position: 200%;
+    }
+}
+
+.tag-box .tag {
+    position: absolute;
+    inset: 3px;
+    background-color: black;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.tag-box .tag:hover {
+    color: #5300a0;
+}
+
+.content h1 {
+    font-size: 4rem;
+    font-weight: 600;
+    margin: 2rem 0;
+    line-height: 1.2;
+    text-shadow: 0 0 10px rgba(128, 128, 128, 0.418);
+}
+
+.description {
+    font-size: 1.2rem;
+    max-width: 35rem;
+    color: gray;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.btn-get-started,
+.btn-signing-main {
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.6rem 1.8rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-get-started {
+    border: 1px solid #2a2a2a;
+    color: white;
+}
+
+.btn-get-started:hover {
+    background-color: #1a1a1a;
+}
+
+.btn-signing-main {
+    background-color: lightgray;
+    color: black;
+}
+
+.btn-signing-main:hover {
+    background-color: gray;
+}
+
+.main{
+    position: fixed;
+}
+
+@media (max-width: 1300px) {
+    header {
+        padding: 1rem 2rem;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .content1 {
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .content1 h1 {
+        font-size: 2.5rem;
+    }
+
+    .description1 {
+        font-size: 1rem;
+    }
+
+    .tag1-box1 {
+        width: 15rem;
+        height: 2.2rem;
+    }
+
+    .buttons1 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .content1 {
+        margin-left: 2%;
+    }
+
+    .content1 h1 {
+        font-size: 2rem;
+    }
+
+    .description1 {
+        font-size: 0.9rem;
+    }
+
+    .tag1-box1 {
+        width: 12rem;
+        height: 2rem;
+    }
+
+    .btn-get-started1,
+    .btn-signing-main1 {
+        font-size: 1rem;
+        padding: 0.5rem 1.5rem;
+    }
+}
+
+
+
+footer{
+    background-color: black;
+}
+
+.footerContainer{
+    width:100;
+    padding: 70px 30px 20px;
+}
+
+.socialIcons{
+    display: flex;
+    justify-content: center;
+}
+
+.socialIcons a{
+    text-decoration: none;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 500%;
+}
+
+.socialIcons a i{
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+}
+
+
+.socialIcons a:hover{
+    background-color: black;
+    transition: 0.5s;
+}
+
+.socialIcons a:hover i{
+    color: white;
+    transition: 0.5s;
+}
+
+.footerNav{
+    margin: 30px 0;
+}
+
+.footerNav u1{
+    display: flex;
+    justify-content:center ;
+}
+
+.footerNav u1 li a{
+    color: white;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.footerNav u1 li a:hover{
+    opacity: 1;
+}
+
+.footerBottom{
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+.footerBottom p{
+    color: white;
+}
+
+.designer{
+    opacity:0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0px 5px;
+}
+
+@media (max-width: 768px) {
+    .footerNav {
+        padding: 1rem 2rem;
+        flex-direction: row;
+        align-items: flex-start;
+        font-size: 12px
+        
+    }
+
+    .footerNav > u1{
+      font-size: 10px;
+      margin-left: 0;
+      margin-right:0;  
+      gap:1 rem;    
+    }
+
+    .footerContainer {
+        flex-direction: row;
+        gap: 1rem;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .footerBottom {
+        margin-left: 5%;
+    }
+}
+
+header i {
+    font-size: 28px;
+    margin-right: 10px;
+    color: white;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-wrapper i {
+    font-size: 28px;
+    color: white;
+}
+
+.logo-wrapper .log {
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+}
+
+.logo1-wrapper1 {
+    display: flex;
+    align-items: center;
+    gap: 16px; 
+}
+
+.logo1-wrapper1 form {
+    margin: 0;
+}
+
+.btn-signing {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-signing i {
+    font-size: 28px;
+    color: white;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-signing:hover i {
+    color: gray; 
+    transform: scale(1.2); 
+}
+
+.footer-modern {
+  background-color: #1e1c2a;
+  color: #ddd;
+  padding: 60px 30px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.footer-box h2.footer-logo {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.footer-box h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.footer-box p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #bbb;
+}
+
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-box ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-box ul li a {
+  text-decoration: none;
+  color: #aaa;
+  transition: color 0.3s;
+}
+
+.footer-box ul li a:hover {
+  color: #fff;
+}
+
+.footer-social a {
+  color: white;
+  font-size: 16px;
+  background: #333;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 100%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.footer-social a:hover {
+  background: white;
+  transform: scale(1.1);
+  color:#1a1a1a;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #bbb;
+}
+
+.subscribe-form {
+  display: flex;
+  margin-top: 15px;
+}
+
+.subscribe-form input[type="email"] {
+  padding: 10px;
+  border: none;
+  outline: none;
+  width: 70%;
+  border-radius: 4px 0 0 4px;
+}
+
+.subscribe-form button {
+  padding: 10px 15px;
+  background: #a065ff;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #7a3fff;
+}
+
+/* === Scroll Fade-In Animation === */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content, .content1 {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.content:nth-of-type(2), .content1:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.content:nth-of-type(3), .content1:nth-of-type(3) {
+  animation-delay: 0.4s;
+}
+
+/* === Floating Animation for Icons === */
+.logo-wrapper i, .footer-social a i {
+  animation: floatIcon 2.5s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* === Button Hover Pulse === */
+.buttons a:hover,
+.buttons1 a:hover,
+.btn-signing:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* === Social Icons bounce === */
+.footer-social a:hover {
+  animation: bounceIcon 0.3s ease;
+}
+
+@keyframes bounceIcon {
+  0% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.2) translateY(-5px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+/* === Smooth page load === */
+body {
+  animation: fadePage 0.8s ease-in;
+}
+
+@keyframes fadePage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carousel {
+      max-width: 600px;
+      height: 350px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .carousel-image {
+      height: 500px;
+      object-fit: cover;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item img:hover {
+      transform: scale(1.02);
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      padding: 10px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 6%;
+    }
+
+    @media (max-width: 768px) {
+      .carousel {
+        height: 300px;
+      }
+
+      .carousel-image {
+        height: 300px;
+      }
+    }
+
+    .review-container {
+      max-width: 600px;
+      margin: 60px auto;
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.05);
+    }
+
+    .review-container h2 {
+      margin-bottom: 25px;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+    }
+
+    .form-label {
+      color: #ccc;
+    }
+
+    .form-control {
+      background-color: #2a2a2a;
+      border: 1px solid #444;
+      color: #f1f1f1;
+    }
+
+    .form-control::placeholder {
+      color: #888;
+    }
+
+    .form-control:focus {
+      background-color: #2a2a2a;
+      color: #fff;
+      box-shadow: none;
+      border-color: #0d6efd;
+    }
+
+    .btn-primary {
+      background-color: #7a3fff;
+      border: none;
+      width: 100%;
+      font-weight: 600;
+    }
+
+    .star-rating {
+      direction: rtl;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-bottom: 15px;
+    }
+
+    .star-rating input {
+      display: none;
+    }
+
+    .star-rating label {
+      font-size: 1.8rem;
+      color: #444;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .star-rating input:checked ~ label,
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+      color: #ffc107;
+    }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-wrapper">
+            <a href="adminlogin.html"target="_blank"><i class="fab fa-bitcoin"></i></a>
+            <h1 class="log">COINSTOCK</h1>
+            </div>
+
+            <nav>
+                <a href="stocks.html">STOCKS</a>
+                <a href="coins.html">CRYPTO</a>
+                <a href="f&o.html">F&O</a>
+                <a href="fd.html">FD</a>
+            </nav>
+            <div class="logo1-wrapper1">
+            <form action="register.html">
+            <button type="submit" class="btn-signing"><i class="fas fa-plus"></i></button>
+            </form>
+            <form action="login.html">
+            <button type="submit" class="btn-signing"><i class="fas fa-user"></i></button>
+            </form>
+            </div>
+        </header><br><br><br><br><br><br>
+        <main>
+        <div class="content">
+            <div class="tag-box">
+                <div class="tag">INTRODUCING </div>
+            </div>
+
+            <h1>TRADING PLATFORM FOR<br>TRADERS</h1>
+
+            <p class="description">
+                the best way to access stocks, crypto coins, fd at same space instead using different sites, 
+                and experience the best transactions and best portfolio management.
+            </p>
+
+            <div class="buttons">
+                <a href="COINSTOCK1.pdf "target=_blank class="btn-get-started">Details &gt;</a>
+                <a href="register.html" class="btn-signing-main">Getstarted &gt;</a>
+            </div>
+        </div>
+        </main><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <main1>
+        <div class="content1">
+            <div class="tag1-box1">
+                <div class="tag1">INTRODUCING</div>
+            </div>
+
+            <h1>STOCKS<br>FOR TRADERS</h1>
+
+            <p class="description1">
+                Unlock streamlined trading for stocks and shares in one place, 
+                enjoy effortless deals, and optimize your investment portfolio
+            </p>
+
+            <div class="buttons1">
+                <a href="stockspdf.pdf"target=_blank class="btn-get-started1">Details &gt;</a>
+                <a href="stocks.html" class="btn-signing-main1">Getstarted &gt;</a>
+            </div>
+        </div>
+        </main1><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <main>
+        <div class="content">
+            <div class="tag-box">
+                <div class="tag">INTRODUCING</div>
+            </div>
+
+            <h1>CRYPTO<br>CURRENCY</h1>
+
+            <p class="description">
+                The smartest way to manage crypto coins in one place instead of fragmented platforms, 
+                and experience lightning-fast trades with market expertise.
+            </p>
+
+            <div class="buttons">
+                <a href="coinspdf.pdf"target=_blank class="btn-get-started">Details &gt;</a>
+                <a href="coins.html" class="btn-signing-main">Getstarted &gt;</a>
+            </div>
+        </div>
+        </main><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <main1>
+        <div class="content1">
+            <div class="tag1-box1">
+                <div class="tag1">INTRODUCING</div>
+            </div>
+
+            <h1>F&O<br> FOR TRADERS</h1>
+
+            <p class="description1">
+                The simplest way to navigate F&O trades in one place instead of multiple sites, 
+                and experience smooth transactions and expert market guidance.
+            </p>
+
+            <div class="buttons1">
+                <a href="f&opdf.pdf"target=_blank class="btn-get-started1">Details &gt;</a>
+                <a href="f&0.html" class="btn-signing-main1">Getstarted &gt;</a>
+            </div>
+        </div>
+        </main1><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+        <main1>
+        <div class="content">
+            <div class="tag-box">
+                <div class="tag">INTRODUCING</div>
+            </div>
+
+            <h1>FIXED<br>DEPOSIT</h1>
+
+            <p class="description">
+                the best way to invest right fd instead of unbalance fd's, 
+                delivers best returns.
+            </p>
+
+            <div class="buttons">
+                <a href="fdpdf.pdf"target=_blank class="btn-get-started">Details &gt;</a>
+                <a href="fd.html" class="btn-signing-main">Getstarted &gt;</a>
+            </div>
+        </div>
+        </main><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+       <div class="layer-blur"></div>
+
+
+    </div>
+    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <h2>Top Traders in our Platform</h2>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="man1.jpeg" class="d-block w-100 carousel-image" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="woman1.jpg" class="d-block w-100 carousel-image" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="man2.jpeg" class="d-block w-100 carousel-image" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="woman2.jpg" class="d-block w-100 carousel-image" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="man3.jpeg" class="d-block w-100 carousel-image" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="woman3.jpg" class="d-block w-100 carousel-image" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="man4.jpeg" class="d-block w-100 carousel-image" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="woman4.jpg" class="d-block w-100 carousel-image" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="woman5.jpg" class="d-block w-100 carousel-image" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div><br><br>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+<footer class="footer-modern">
+  <div class="footer-wrapper">
+    <!-- Left: Logo + About -->
+    <div class="footer-box">
+      <h2 class="footer-logo"><i class="fab fa-bitcoin"></i> COINSTOCKS</h2>
+      <p>With this pre-made platform, you get access to stocks, crypto, F&O, and FD tools with 24/7 expert support and real-time updates.</p><br>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/"target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/"target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://discord.com/"target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://youtube.com"target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://linked.com"target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- Middle: Links -->
+    <div class="footer-box">
+      <h3>About</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="ourterms.html">Our Terms</a></li>
+        <li><a href="contactus.html">Report</a></li>
+      </ul>
+    </div>
+
+    <!-- Right: Contact + Email Signup -->
+    <div class="footer-box">
+      <h3>Contact us</h3>
+      <ul class="contact-info">
+        <li><i class="fas fa-envelope"></i> info@coinstock.in</li>
+        <li><i class="fas fa-phone"></i> +91 6374735441</li>
+        <li><i class="fas fa-map-marker-alt"></i> 123, Market Road, Chennai, India</li>
+      </ul>
+      <form class="subscribe-form">
+        <input type="email" placeholder="E-mail" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

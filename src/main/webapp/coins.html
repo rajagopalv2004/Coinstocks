@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coins Large Cap</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Global styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: black;
+  color: #ffffff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 999;
+    background-color: transparent;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+header img {
+    font-size: 28px;
+    margin-right: 10px;
+    color: white;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Controls the space between icon and text */
+}
+
+.logo-wrapper i {
+    height: 35px; 
+    width: auto;  
+    font-size: 3em;
+}
+
+
+.logo-wrapper .log {
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+}
+
+.back-icon {
+  margin-right: 15px;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: black;
+  flex-wrap: wrap;
+  margin-left: 25px;
+  margin-right: 100px;
+  margin-bottom: 25px;
+}
+
+.tab-group {
+  display: flex;
+  gap: 10px;
+  margin: 5px 0;
+}
+
+.tab {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background-color: black;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+.tab.active {
+  background-color: #3e5eff;
+  color: white;
+  height: 20px;
+}
+
+/* Stock list */
+.stock-list {
+  padding: 10px 20px;
+}
+
+.stock-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #18181d;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 25px;
+  margin-left: 100px;
+  margin-right: 100px;
+  gap: 20px;
+}
+
+.stock-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   
+}
+
+.stock-info h2 {
+  margin: 0;
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.stock-info a{
+    text-decoration: none;
+}
+
+.stock-info p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.stock-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: flex-end;   
+  text-align: right;
+}
+
+
+.stock-price h3 {
+  margin: 0;
+  color: #32cd32;
+  font-size: 16px;
+}
+
+.stock-price p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #7be27b;
+  align-self:flex-end;
+}
+
+.star i {
+  font-size: 18px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.star {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.star {
+  cursor: pointer;
+}
+
+.star .fas {
+  color: gold; /* Selected color */
+}
+
+.star .far {
+  color: grey; /* Default color */
+}
+
+
+footer{
+    background-color: black;
+}
+
+.footerContainer{
+    width:100;
+    padding: 70px 30px 20px;
+}
+
+.socialIcons{
+    display: flex;
+    justify-content: center;
+}
+
+.socialIcons a{
+    text-decoration: none;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 500%;
+}
+
+.socialIcons a i{
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+}
+
+/*hover effects on social media icon*/
+
+.socialIcons a:hover{
+    background-color: black;
+    transition: 0.5s;
+}
+
+.socialIcons a:hover i{
+    color: white;
+    transition: 0.5s;
+}
+
+
+/* Icon up */
+.up {
+  margin-left: 5px;
+  color: #32cd32;
+}
+
+.footerNav{
+    margin: 30px 0;
+}
+
+.footerNav u1{
+    display: flex;
+    justify-content:center ;
+}
+
+.footerNav u1 li a{
+    color: white;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.footerNav u1 li a:hover{
+    opacity: 1;
+}
+
+.footerBottom{
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+.footerBottom p{
+    color: white;
+}
+
+.designer{
+    opacity:0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0px 5px;
+}
+
+@media (max-width: 768px) {
+    .footerNav {
+        padding: 1rem 2rem;
+        flex-direction: row;
+        align-items: flex-start;
+        font-size: 12px
+        
+    }
+
+    .footerNav > u1{
+      font-size: 10px;
+      margin-left: 0;
+      margin-right:0;  
+      gap:1 rem;    
+    }
+
+    .footerContainer {
+        flex-direction: row;
+        gap: 1rem;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .footerBottom {
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+  header h1, .tabs .font h1 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0.5rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    gap: 10px;
+  }
+
+  .tab-group {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stock-item {
+    margin-left: 20px;
+    margin-right: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .stock-price, .star {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1, .tabs .font h1 {
+    font-size: 1.4rem;
+  }
+
+  .tab {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .stock-price h3, .stock-info h2 {
+    font-size: 14px;
+  }
+
+  .stock-info p, .stock-price p {
+    font-size: 11px;
+  }
+}
+
+.tabs .font h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: white;
+  margin: 0;
+}
+
+.tab a{
+  text-decoration: none;
+  color:inherit;
+}
+
+.tab {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.wishlist-dropdown {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 70px;
+  width: 200px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  padding: 10px;
+}
+
+.wishlist-dropdown h3 {
+  font-size: 16px;
+  margin: 0 0 10px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.wishlist-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.wishlist-dropdown li {
+  padding: 6px 0;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #444;
+}
+
+.wishlist-icon {
+  cursor: pointer;
+  position: relative;
+  margin-right: 20px;
+  font-size: 26px;
+}
+
+.wishlist-icon i {
+  color: white; /* Default color */
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.wishlist-icon:hover i {
+  color: gray;
+  transform: scale(1.15);
+}
+
+.footer-modern {
+  background-color: #1e1c2a;
+  color: #ddd;
+  padding: 60px 30px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.footer-box h2.footer-logo {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.footer-box h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.footer-box p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #bbb;
+}
+
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-box ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-box ul li a {
+  text-decoration: none;
+  color: #aaa;
+  transition: color 0.3s;
+}
+
+.footer-box ul li a:hover {
+  color: #fff;
+}
+
+.footer-social a {
+  color: white;
+  font-size: 16px;
+  background: #333;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 100%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.footer-social a:hover {
+  background: white;
+  transform: scale(1.1);
+  color:#1a1a1a;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #bbb;
+}
+
+.subscribe-form {
+  display: flex;
+  margin-top: 15px;
+}
+
+.subscribe-form input[type="email"] {
+  padding: 10px;
+  border: none;
+  outline: none;
+  width: 70%;
+  border-radius: 4px 0 0 4px;
+}
+
+.subscribe-form button {
+  padding: 10px 15px;
+  background: #a065ff;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #7a3fff;
+}
+
+.stock-info h2:hover{
+color:gray;
+}
+
+/* === Scroll Fade-In Animation === */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stock-item {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.stock-item:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.stock-item:nth-of-type(3){
+  animation-delay: 0.4s;
+}
+
+
+/* === Button Hover Pulse === */
+.buttons a:hover,
+.buttons1 a:hover,
+.btn-signing:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* === Smooth page load === */
+body {
+  animation: fadePage 0.8s ease-in;
+}
+
+@keyframes fadePage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-wrapper">
+    <i class="fab fa-bitcoin" style="margin-right: 10px;"></i>
+    <h1>COINSTOCKS</h1>
+    </div>
+    <div class="wishlist-icon" title="View Wishlist">
+    <i class="fas fa-bookmark"></i>
+    </div>
+  </header>
+  
+   <!-- Wishlist Dropdown -->
+   <div class="wishlist-dropdown" id="wishlistDropdown">
+   <h3>My Wishlist</h3>
+   <ul id="wishlistItems"></ul>
+   </div>  
+  
+  <section class="tabs">
+    <div class="font">
+    <h1>CRYPTO COINS</h1>
+    </div><br>
+    <div class="tab-group">
+    <div class="tab active" data-tab="large">Large Cap</div>
+    <div class="tab" data-tab="mid">Mid Cap</div>
+    <div class="tab" data-tab="small">Small Cap</div>
+    </div>
+  </section>
+
+  <main class="stock-list">
+    <div id="large" class="tab-content">
+    <div class="stock-item">
+      <div class="stock-info">
+        <a href="bitcoin.html"target="_blank"><h2>Bitcoin (BTC)</h2></a>
+        <p>Digital gold, store of value<br>[BINANCE:BTCUSDT] </p>
+      </div>
+      <div class="stock-price">
+        <h3>₹3,258.80 <span class="up"><i class="fas fa-caret-up"></i></span></h3>
+        <p>+₹53.00 (+1.65%)</p>
+      </div>
+      <div class="star" data-stock="Bitcoin"><i class="far fa-star"></i></div>
+    </div>
+
+    <div class="stock-item">
+      <div class="stock-info">
+        <a href="ethereum.html"target="_blank"><h2>Ethereum (ETH) </h2></a>
+        <p>Smart contracts, dApps, DeFi<br>[BINANCE:ETHUSDT]</p>
+      </div>
+      <div class="stock-price">
+        <h3>₹247.88 <span class="up"><i class="fas fa-caret-up"></i></span></h3>
+        <p>+₹0.56 (+0.23%)</p>
+      </div>
+      <div class="star" data-stock="Ethereum"><i class="far fa-star"></i></div>
+    </div>
+
+    <div class="stock-item">
+      <div class="stock-info">
+        <a href="bnb.html"target="_blank"><h2>BNB (Binance Coin)</h2></a>
+        <p>Exchange utility (Binance), DeFi <br>[BINANCE:BNBUSDT]</p>
+      </div>
+      <div class="stock-price">
+        <h3>₹247.88 <span class="up"><i class="fas fa-caret-up"></i></span></h3>
+        <p>+₹0.56 (+0.23%)</p>
+      </div>
+      <div class="star" data-stock="BNB"><i class="far fa-star"></i></div>
+    </div>
+    
+    <div class="stock-item">
+      <div class="stock-info">
+        <a href="solana.html"target="_blank"><h2>Solana (SOL) </h2></a>
+        <p>High-speed dApps, low-fee blockchain<br>[BINANCE:SOLUSDT]</p>
+      </div>
+      <div class="stock-price">
+        <h3>₹247.88 <span class="up"><i class="fas fa-caret-up"></i></span></h3>
+        <p>+₹0.56 (+0.23%)</p>
+      </div>
+      <div class="star" data-stock="Solana"><i class="far fa-star"></i></div>
+    </div>
+
+    <div class="stock-item">
+      <div class="stock-info">
+        <a href="cardano.html"target="_blank"><h2>Cardano (ADA)</h2></a>
+        <p> Scalable smart contracts, academic-backed chain <br>[BINANCE:ADAUSDT]</p>
+      </div>
+      <div class="stock-price">
+        <h3>₹247.88 <span class="up"><i class="fas fa-caret-up"></i></span></h3>
+        <p>+₹0.56 (+0.23%)</p>
+      </div>
+      <div class="star" data-stock="Cardano"><i class="far fa-star"></i></div>
+    </div>
+
+    <div class="stock-item">
+      <div class="stock-info">
+        <a href="xrp.html"target="_blank"><h2>Ripple (XRP)</h2></a>
+        <p>Cross-border payments, banking solutions <br>[BINANCE:XRPUSDT]</p>
+      </div>
+      <div class="stock-price">
+        <h3>₹247.88 <span class="up"><i class="fas fa-caret-up"></i></span></h3>
+        <p>+₹0.56 (+0.23%)</p>
+      </div>
+      <div class="star" data-stock="XRP"><i class="far fa-star"></i></div>
+    </div>
+    </div>
+
+    <div id="mid" class="tab-content" style="display: none;">
+    <div class="stock-item">
+      <div class="stock-info">
+        <a href="polkadot.html"target="_blank"><h2>Polkadot (DOT)</h2></a>
+        <p>Cross-chain interoperability<br>[BINANCE:DOTUSDT]</p>
+      </div>
+      <div class="stock-price">
+        <h3>₹247.88 <span class="up"><i class="fas fa-caret-up"></i></span></h3>
+        <p>+₹0.56 (+0.23%)</p>
+      </div>
+      <div class="star" data-stock="Polkadot"><i class="far fa-star"></i></div>
+    </div>
+
+    <div class="stock-item">
+      <div class="stock-info">
+        <a href="avalanche.html"target="_blank"><h2>Avalanche (AVAX)</h2></a>
+        <p>DeFi and scalable blockchain platform<br>[BINANCE:AVAXUSDT]</p>
+      </div>
+      <div class="stock-price">
+        <h3>₹247.88 <span class="up"><i class="fas fa-caret-up"></i></span></h3>
+        <p>+₹0.56 (+0.23%)</p>
+      </div>
+      <div class="star" data-stock="Avalanche"><i class="far fa-star"></i></div>
+    </div>
+    </div>
+
+    <div class="stock-item">
+      <div class="stock-info">
+        <a href="dodge.html"target="_blank"><h2>Dogecoin (DOGE)</h2></a>
+        <p>Micro-payments, tipping solutions.<br>[BINANCE:DOGEUSDT]</p>
+      </div>
+      <div class="stock-price">
+        <h3>₹247.88 <span class="up"><i class="fas fa-caret-up"></i></span></h3>
+        <p>+₹0.56 (+0.23%)</p>
+      </div>
+      <div class="star" data-stock="Dodgecoin"><i class="far fa-star"></i></div>
+    </div>
+    </div>
+
+    <div id="small" class="tab-content" style="display: none;">
+    <div class="stock-item">
+      <div class="stock-info">
+        <a href="shiba.html"target="_blank"><h2>Shiba Inu (SHIB) </h2></a>
+        <p>Meme token, DeFi ecosystem<br>[BINANCE:SHIBUSDT]</p>
+      </div>
+      <div class="stock-price">
+        <h3>₹247.88 <span class="up"><i class="fas fa-caret-up"></i></span></h3>
+        <p>+₹0.56 (+0.23%)</p>
+      </div>
+      <div class="star" data-stock="Shiba Inu"><i class="far fa-star"></i></div>
+    </div>
+
+    <div class="stock-item">
+      <div class="stock-info">
+        <a href="litecoin.html"target="_blank"><h2>Litecoin (LTC)</h2></a>
+        <p>Peer-to-peer payments, faster Bitcoin alternative<br>[BINANCE:LTCUSDT]</p>
+      </div>
+      <div class="stock-price">
+        <h3>₹247.88 <span class="up"><i class="fas fa-caret-up"></i></span></h3>
+        <p>+₹0.56 (+0.23%)</p>
+      </div>
+      <div class="star" data-stock="Litecoin"><i class="far fa-star"></i></div>
+    </div>
+    </div>
+
+  </main><br><br><br><br>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Tab functionality
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        contents.forEach(c => c.style.display = 'none');
+        const selected = tab.getAttribute('data-tab');
+        document.getElementById(selected).style.display = 'block';
+      });
+    });
+
+    // Wishlist functionality with unique key
+    const wishlistKey = "wishlist_coinstocks"; // Unique key for this page
+    const wishlist = JSON.parse(localStorage.getItem(wishlistKey)) || [];
+    const wishlistDropdown = document.getElementById('wishlistDropdown');
+    const wishlistItems = document.getElementById('wishlistItems');
+    const wishlistIcon = document.querySelector('.wishlist-icon');
+
+    function updateWishlistDisplay() {
+      wishlistItems.innerHTML = "";
+      if (wishlist.length === 0) {
+        wishlistItems.innerHTML = "<li>No stocks added</li>";
+      } else {
+        wishlist.forEach(stock => {
+          const li = document.createElement('li');
+          li.textContent = stock;
+          wishlistItems.appendChild(li);
+        });
+      }
+    }
+
+    document.querySelectorAll('.star').forEach(star => {
+      const icon = star.querySelector('i');
+      const stockName = star.getAttribute('data-stock');
+
+      // Set icon based on existing wishlist
+      if (wishlist.includes(stockName)) {
+        icon.classList.remove('far');
+        icon.classList.add('fas');
+      }
+
+      // Toggle wishlist state on click
+      star.addEventListener('click', () => {
+        icon.classList.toggle('far');
+        icon.classList.toggle('fas');
+
+        if (icon.classList.contains('fas')) {
+          if (!wishlist.includes(stockName)) wishlist.push(stockName);
+        } else {
+          const index = wishlist.indexOf(stockName);
+          if (index > -1) wishlist.splice(index, 1);
+        }
+
+        localStorage.setItem(wishlistKey, JSON.stringify(wishlist));
+        updateWishlistDisplay();
+      });
+    });
+
+    // Toggle wishlist dropdown
+    wishlistIcon.addEventListener('click', () => {
+      wishlistDropdown.style.display = 
+        wishlistDropdown.style.display === "block" ? "none" : "block";
+      updateWishlistDisplay();
+    });
+
+    // Optional: Close dropdown if clicked outside
+    document.addEventListener('click', function (e) {
+      if (!wishlistIcon.contains(e.target) && !wishlistDropdown.contains(e.target)) {
+        wishlistDropdown.style.display = "none";
+      }
+    });
+
+    updateWishlistDisplay(); // Initial load
+  });
+</script>
+
+<footer class="footer-modern">
+  <div class="footer-wrapper">
+    <!-- Left: Logo + About -->
+    <div class="footer-box">
+      <h2 class="footer-logo"><i class="fab fa-bitcoin"></i> COINSTOCKS</h2>
+      <p>With this pre-made platform, you get access to stocks, crypto, F&O, and FD tools with 24/7 expert support and real-time updates.</p><br>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/"target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/"target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://discord.com/"target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://youtube.com"target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://linked.com"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- Middle: Links -->
+    <div class="footer-box">
+      <h3>About</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="ourterms.html">Our Terms</a></li>
+        <li><a href="contactus.html">Report</a></li>
+      </ul>
+    </div>
+
+    <!-- Right: Contact + Email Signup -->
+    <div class="footer-box">
+      <h3>Contact us</h3>
+      <ul class="contact-info">
+        <li><i class="fas fa-envelope"></i> info@coinstock.in</li>
+        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+        <li><i class="fas fa-map-marker-alt"></i> 123, Market Road, Chennai, India</li>
+      </ul>
+      <form class="subscribe-form">
+        <input type="email" placeholder="E-mail" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

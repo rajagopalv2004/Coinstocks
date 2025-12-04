@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Walmart Stock Chart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: black;
+      color: #fff;
+      font-size: 25px;
+      margin-right: 10px;
+    }
+
+    header {
+      background-color:#1a1a1a;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      height: 30px;
+      font-size: 25px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    #stockChart {
+      width: 100%;
+      height: 680px;
+      display: block;
+      background: #1a1a1a;
+      border: 1px solid #aaa;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+  button {
+  margin: 4px;
+  padding: 8px 16px;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+
+button:hover {
+  background: #333;
+}
+
+button.active {
+  background: #3e5eff !important;
+}
+
+
+    #tooltip {
+      position: absolute;
+      background: #222;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      pointer-events: none;
+      display: none;
+      border: 1px solid #444;
+    }
+
+    header > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+body .bod{
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: center;
+}
+
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <i class="fab fa-bitcoin" style="margin-right: 10px;"></i>COINSTOCKS
+  </div>
+  <div style="display: flex; align-items: center; gap: 15px;">
+    <div id="clock">--:--:--</div>
+  </div>
+</header>
+<div class ="bod"><i class="fas fa-store" style="margin-right: 5px;"></i>Walmart Stock Chart</div>
+<canvas id="stockChart"></canvas>
+<div id="tooltip"></div>
+
+<div class="buttons">
+  <button onclick="updateChart('1D')">1D</button>
+  <button onclick="updateChart('1M')">1M</button>
+  <button onclick="updateChart('1Y')">1Y</button>
+  <button onclick="updateChart('ALL')">ALL</button>
+</div>
+
+<script>
+  const canvas = document.getElementById('stockChart');
+  const ctx = canvas.getContext('2d');
+  const tooltip = document.getElementById('tooltip');
+  let prices = [], dates = [], currentView = 'ALL', currentData = [];
+
+  // Simulate 5 years of data
+  function generateData(type) {
+  prices = [];
+  dates = [];
+
+  const now = new Date();
+  let dataPoints = 365 * 5;
+  let interval = 1; // in milliseconds
+
+  if (type === '1D') {
+    dataPoints = 60; // 60 data points during the day
+    interval = 10 * 60 * 1000; // every 10 minutes
+  } else if (type === '1M') {
+    dataPoints = 30; // 30 days
+    interval = 24 * 60 * 60 * 1000; // 1 day
+  } else if (type === '1Y') {
+    dataPoints = 365; // 365 days
+    interval = 24 * 60 * 60 * 1000; // 1 day
+  } else {
+    dataPoints = 365 * 5;
+    interval = 24 * 60 * 60 * 1000;
+  }
+
+  for (let i = dataPoints - 1; i >= 0; i--) {
+    const timestamp = new Date(now.getTime() - i * interval);
+    const trend = Math.sin(i / 50) * 30 + Math.cos(i / 100) * 15;
+    const noise = Math.random() * 10;
+    prices.push(97.46 + trend + noise);
+    dates.push(timestamp);
+  }
+}
+
+
+  function draw(pricesToShow, datesToShow, view) {
+    if (pricesToShow.length < 2) return;
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const w = canvas.width, h = canvas.height, padding = 50;
+    const max = Math.max(...pricesToShow);
+    const min = Math.min(...pricesToShow);
+    const range = max - min;
+
+    // Y-Axis
+    ctx.fillStyle = '#888';
+    ctx.textAlign = 'right';
+    ctx.font = '12px system-ui';
+    for (let i = 0; i <= 5; i++) {
+      const y = padding + ((h - 2 * padding) / 5) * i;
+      const price = (max - (range / 5) * i).toFixed(2);
+      ctx.fillText(`₹${price}`, padding - 10, y + 4);
+      ctx.strokeStyle = '#333';
+      ctx.beginPath(); ctx.moveTo(padding, y); ctx.lineTo(w - padding, y); ctx.stroke();
+    }
+
+    // X-Axis Labels
+    ctx.textAlign = 'center';
+    let labelCount = 6;
+    let usedLabels = new Set();
+    for (let i = 0; i < labelCount; i++) {
+      const index = Math.floor(i * (datesToShow.length - 1) / (labelCount - 1));
+      const x = padding + (index / (pricesToShow.length - 1)) * (w - 2 * padding);
+      let label = '';
+
+      if (view === '1D') {
+  label = datesToShow[index].toLocaleTimeString('en-US', {
+    hour: 'numeric', minute: '2-digit', hour12: true
+  });
+}
+ else if (view === '1M') {
+        label = datesToShow[index].toLocaleDateString('en-US', { day: 'numeric', month: 'short' });
+      } else if (view === '1Y') {
+        label = datesToShow[index].toLocaleDateString('en-US', { month: 'short' });
+      } else {
+        label = datesToShow[index].getFullYear().toString();
+      }
+
+      if (!usedLabels.has(label)) {
+        ctx.fillText(label, x, h - padding + 20);
+        usedLabels.add(label);
+      }
+    }
+
+    // Line Chart & data points
+    ctx.strokeStyle = 'lime';
+    ctx.beginPath();
+    currentData = [];
+    pricesToShow.forEach((price, i) => {
+      const x = padding + (i / (pricesToShow.length - 1)) * (w - 2 * padding);
+      const y = h - padding - ((price - min) / range) * (h - 2 * padding);
+      currentData.push({ x, y, price: price.toFixed(2) });
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+  }
+
+  function updateChart(type) {
+  currentView = type;
+  generateData(type);
+  draw(prices, dates, currentView);
+
+  // Update active button
+  const buttons = document.querySelectorAll('.buttons button');
+  buttons.forEach(btn => {
+    if (btn.textContent === type) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
+
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    for (const point of currentData) {
+      if (Math.abs(mouseX - point.x) < 5 && Math.abs(mouseY - point.y) < 5) {
+        tooltip.style.left = e.pageX + 10 + 'px';
+        tooltip.style.top = e.pageY + 10 + 'px';
+        tooltip.innerText = `₹${point.price}`;
+        tooltip.style.display = 'block';
+        return;
+      }
+    }
+    tooltip.style.display = 'none';
+  });
+
+  function updateClock() {
+  const now = new Date();
+  const timeString = now.toLocaleTimeString('en-IN', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true
+  });
+  document.getElementById('clock').innerText = timeString;
+}
+
+
+  setInterval(updateClock, 1000);
+  updateClock();
+  updateChart('1D');
+</script>
+
+</body>
+</html>

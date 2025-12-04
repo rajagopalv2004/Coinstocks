@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, sans-serif;
+    }
+
+    body {
+      background-color: black;
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .slidebar {
+      width: 300px;
+      height: 100vh;
+      background-color: rgb(110, 108, 108);
+      padding: 16px;
+      border-radius: 20px;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .slidebar h3 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 19px;
+      background-color: transparent;
+      font-weight: 400;
+      transition: 0.3s ease;
+    }
+
+    .slidebar h3:hover {
+      background-color: #333;
+      color: yellowgreen;
+    }
+
+    .header {
+      padding: 20px;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 400;
+    }
+
+    .content-area {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .content-panel {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .content-panel.active {
+      display: block;
+    }
+
+    .user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  color: white;
+}
+
+.user-table th, .user-table td {
+  border: 1px solid #555;
+  padding: 12px;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: #333;
+  color: yellowgreen;
+  font-weight: bold;
+}
+
+.user-table tr:nth-child(even) {
+  background-color: #222;
+}
+
+.user-table .delete-btn {
+  color: red;
+  cursor: pointer;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.user-table .delete-btn:hover {
+  color: darkred;
+}
+
+.message-table{
+width: 100%;
+border-collapse: collapse;
+margin-top: 20px;
+color: white;
+}
+
+.message-table th, .message-table td{
+border: 1px solid #555;
+padding: 12px;
+text-align: left;
+}
+
+.message-table th{
+background-color:#333;
+color: yellowgreen;
+font-weight: bold;
+}
+
+.message-table tr:nth-child(even){
+background-color: #222;
+}
+
+.message-table tr:nth-child(even) {
+  background-color: #222;
+}
+
+.message-table .delete-btn {
+  color: red;
+  cursor: pointer;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.mesage-table .delete-btn:hover {
+  color: darkred;
+}
+
+
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="slidebar">
+      <h3 onclick="showPanel('userPanel')"><i class="fas fa-user"></i><span>USER</span></h3>
+      <h3 onclick="showPanel('messagePanel')"><i class="fas fa-flag"></i><span>REPORTS</span></h3>
+      <h3 onclick="logout()"><i class="fas fa-sign-out-alt"></i><span>LOGOUT</span></h3>
+    </div>
+
+    <div class="content-area">
+      <div class="header">
+        <h1>ADMIN DASHBOARD</h1>
+      </div>
+
+      <div id="userPanel" class="content-panel active">
+        <h2>User Management</h2>
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>NAME</th>
+              <th>GENDER</th>
+              <th>DATE OF BIRTH</th>
+              <th>EMAIL</th>
+              <th>MOBILE NUMBER</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody id="userTableBody">
+            <!-- Fetched from backend -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="messagePanel" class="content-panel">
+        <h2>✉️ Report Management</h2>
+        <table class="message-table">
+        <thead>
+        <tr>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>PHONE</th>
+        <th>MESSAGE</th>
+        <th>ACTION</th>
+        </tr>
+        </thead>
+        <tbody id="messageTableBody">
+        </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+  function showPanel(panelId) {
+    document.querySelectorAll('.content-panel').forEach(panel => {
+      panel.classList.remove('active');
+    });
+    document.getElementById(panelId).classList.add('active');
+  }
+
+
+  // Load users from servlet and render inside table
+  function loadUserData() {
+    fetch('/project1/FetchUserServlet') // ✅ Update if your project name is different
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("userTableBody").innerHTML = html;
+        attachDeleteEvents(); // Activate delete buttons
+      })
+      .catch(err => {
+        console.error("Failed to load users", err);
+      });
+  }
+
+  // Attach click event to all delete buttons
+  function attachDeleteEvents() {
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const row = this.closest('tr');
+        const email = this.dataset.email;
+
+        const confirmDelete = confirm("Are you sure you want to delete user: " + email + "?");
+        if (!confirmDelete) return;
+
+        fetch('/project1/DeleteUserServlet', {  // ✅ Corrected endpoint
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `email=${encodeURIComponent(email)}`
+        })
+        .then(res => res.text())
+        .then(response => {
+          if (response.trim() === "success") {
+            row.remove();
+          } else if (response.trim() === "not_found") {
+            alert("User not found in database.");
+          } else {
+            alert("Error deleting user.");
+          }
+        })
+        .catch(err => {
+          console.error("Error calling DeleteUserServlet:", err);
+          alert("Server error while deleting user.");
+        });
+      });
+    });
+  }
+  
+  // Load users from servlet and render inside table
+  function loadMessageData() {
+    fetch('/project1/FetchMessageServlet') // ✅ Update if your project name is different
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("messageTableBody").innerHTML = html;
+        attachDeleteEvents(); // Activate delete buttons
+      })
+      .catch(err => {
+        console.error("Failed to load users", err);
+      });
+  }
+
+  // Attach click event to all delete buttons
+  function attachDeleteEvents() {
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const row = this.closest('tr');
+        const email = this.dataset.email;
+
+        const confirmDelete = confirm("Are you sure you want to delete user: " + email + "?");
+        if (!confirmDelete) return;
+
+        const isUser = row.closest('table').classList.contains('user-table');
+        const url = isUser ? '/project1/DeleteUserServlet' : '/project1/DeleteMessageServlet';
+
+        fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `email=${encodeURIComponent(email)}`
+        })
+        .then(res => res.text())
+        .then(response => {
+          if (response.trim() === "success") {
+            row.remove();
+          } else if (response.trim() === "not_found") {
+            alert("User not found in database.");
+          } else {
+            alert("Error deleting user.");
+          }
+        })
+        .catch(err => {
+          console.error("Error calling DeleteMessageServlet:", err);
+          alert("Server error while deleting user.");
+        });
+      });
+    });
+  }
+  
+  function logout() {
+	  if (confirm("Are you sure you want to log out?")) {
+	    window.location.href = "/project1/adminlogoutServlet"; // ✅ Change project1 if your project has a different name
+	  }
+	}
+  
+  window.onload = function() {
+	  loadUserData();     // Load users into User table
+	  loadMessageData();  // Load messages into Message table
+	};
+
+</script>
+
+</body>
+</html>

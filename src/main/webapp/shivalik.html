@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shivalik Small Finance Bank - FD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: black;
+      color: white;
+      padding: 16px;
+    }
+    .header {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     font-size: 24px;
+     font-weight: 400;
+     margin-bottom: 20px;
+    }
+
+    .card {
+      background: #18181d;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .tag {
+      background: #333;
+      color: #ccc;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-size: 12px;
+      margin-left: 8px;
+    }
+    .interest-rate {
+      color: #8aff8a;
+      font-weight: 600;
+    }
+    .compare-rates div {
+      margin-bottom: 10px;
+    }
+    .highlight {
+      color: #ffd700;
+      font-weight: bold;
+    }
+    .return-box {
+      background: #18181d;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .returns {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+    .slider {
+      width: 100%;
+      margin: 10px 0;
+    }
+    .compare-rates {
+      margin-top: 10px;
+    }
+    .flex-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .icon-text {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .button-group button {
+      background: #2a2f44;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+    .button-group button.active {
+      background: #3e5eff;
+    }
+    .bank-logo {
+     width: 40px;
+     height: 40px;
+     border-radius: 8px;
+     object-fit: contain;
+    }
+    
+    /* === Scroll Fade-In Animation === */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.card:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.card:nth-of-type(3){
+  animation-delay: 0.4s;
+}
+
+
+/* === Button Hover Pulse === */
+.buttons a:hover,
+.buttons1 a:hover,
+.btn-signing:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* === Smooth page load === */
+body {
+  animation: fadePage 0.8s ease-in;
+}
+
+@keyframes fadePage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+    
+  </style>
+</head>
+<body>
+
+    <div class="header">
+    <i class="fab fa-bitcoin"></i>
+    <div>COINSTOCKS</div>
+    </div>
+
+  <div class="card">
+    <div class="section-title"><img src="Shivalik.png" alt="Shivalik Logo" class="bank-logo">
+    <h3>Shivalik small finance bank</h3></div>
+    <div class="icon-text">
+      <div>Interest rate up to <span class="highlight">8.25%</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="icon-text">
+      🔒 Safety Assured: Insured by DICGC (RBI Owned)
+    </div>
+    <div style="margin-top: 5px; font-size: 13px; color: #aaa;">
+      100% insured for investments up to ₹5 Lakh
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">Tenures & Rates</div>
+    <div class="flex-row">
+      <div>1Y 6M</div>
+      <div class="interest-rate">8.05% <span class="tag">Highest</span></div>
+    </div><br>
+    <div class="flex-row">
+      <div>6M</div>
+      <div class="interest-rate">6% <span class="tag">Shortest</span></div>
+    </div><br>
+  </div>
+
+  <div class="card">
+    <div class="section-title">COINSTOCKS – Safe & Secure FD Investment</div>
+    <ul style="font-size: 14px; padding-left: 18px;">
+      <li>Direct Bank Transfer: Funds go to Shivalik small finance bank.</li>
+      <li>Authentic Receipts: Get official FD receipt from bank.</li>
+      <li>Early Withdrawal: Withdraw anytime after 7 days.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="section-title">Fact Sheet</div>
+    <div class="grid-3">
+      <div>₹1000<br><small>Min Investment</small></div>
+      <div>7 Days<br><small>Lock-in Period</small></div>
+      <div>Available<br><small>Early Withdrawal</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">About Shivalik small finance bank</div>
+    <div class="grid-3">
+      <div>DICGC Insured<br><small>Up to ₹5L</small></div>
+      <div>Trusted<br><small>7 Lakh+ customers</small></div>
+      <div>Credible<br><small>AUM over ₹1500 Cr</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">Calculate Your Returns</div>
+    <div class="return-box">
+      <div>Total Value at Maturity</div>
+      <div class="returns" id="maturityValue">₹1,030</div>
+      <div>at 6.00% interest p.a.</div>
+      <div>Total Returns: ₹30</div>
+    </div>
+    <label>Investment Amount</label>
+    <input type="range" min="1000" max="100000" step="1000" value="1000" class="slider" id="amountSlider">
+    <div>₹<span id="amountValue">1000</span></div>
+  </div>
+
+  <div class="card compare-rates">
+    <div class="section-title">Compare Interest Rates</div>
+    <div>SBI - 7.6%</div>
+    <div>HDFC - 7.90%</div>
+    <div>Shivalik Small Finance Bank - 8.05% <span class="highlight">8.05%</span></div>
+    <div>Suryoday Small Finance Bank - 8.4%</div>
+  </div>
+
+  <script>
+    const amountSlider = document.getElementById('amountSlider');
+    const amountValue = document.getElementById('amountValue');
+    const maturityValue = document.getElementById('maturityValue');
+
+    amountSlider.addEventListener('input', () => {
+      const principal = parseInt(amountSlider.value);
+      amountValue.textContent = principal;
+      const rate = 6.00 / 100;
+      const time = 0.5; // 6 months
+      const interest = principal * rate * time;
+      maturityValue.textContent = `₹${Math.round(principal + interest)}`;
+    });
+  </script>
+
+</body>
+</html>
